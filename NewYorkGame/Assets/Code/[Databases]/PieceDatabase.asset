@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd41284227f78345b45b6ae796c7bb0, type: 3}
+  m_Name: PieceDatabase
+  m_EditorClassIdentifier: 
+  pieces:
+  - type: 0
+    prefab: {fileID: 114767614644905846, guid: 17ee69023fed20946b88774f23ec2b65, type: 2}
+    CollisionPropertyList:
+    - pieceType: 0
+      collisionProperty: 1
+  - type: 1
+    prefab: {fileID: 114378938271523154, guid: 0110e16691b10b34dab72d0050ff0ed6, type: 2}
+    CollisionPropertyList: []
+  - type: 2
+    prefab: {fileID: 114257243380332994, guid: 863a5724184449a48bc60e0b057c5d43, type: 2}
+    CollisionPropertyList:
+    - pieceType: 2
+      collisionProperty: 1
+  - type: 3
+    prefab: {fileID: 114959775223496148, guid: d70ec4d66d72d184eb946d441ad165a6, type: 2}
+    CollisionPropertyList:
+    - pieceType: 3
+      collisionProperty: 1
+  - type: 4
+    prefab: {fileID: 114962753362083128, guid: 5f02a8b02e1012c48880e34b4326921a, type: 2}
+    CollisionPropertyList: []
+  - type: 5
+    prefab: {fileID: 114862069895169678, guid: 2b0f06acec968d349a393d598a389cfd, type: 2}
+    CollisionPropertyList: []
+  - type: 6
+    prefab: {fileID: 114053626733230970, guid: ed70e5b1cb020b8458fc586598764f4e, type: 2}
+    CollisionPropertyList: []
+  - type: 7
+    prefab: {fileID: 114951410146868162, guid: 93ae8eda69c498b4298701bd7283daa8, type: 2}
+    CollisionPropertyList: []
+  - type: 8
+    prefab: {fileID: 114384788871205368, guid: e904067600d9e794a891b28fa9f32b64, type: 2}
+    CollisionPropertyList: []
+  - type: 9
+    prefab: {fileID: 114300857160254270, guid: 4caa493b94892fc49b176967445b0509, type: 2}
+    CollisionPropertyList: []
+  - type: 10
+    prefab: {fileID: 114502417473133820, guid: 07d81a5c845635b4a81c3da283977377, type: 2}
+    CollisionPropertyList: []
