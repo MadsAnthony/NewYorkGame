@@ -31,17 +31,24 @@ public class CameraManager : MonoBehaviour {
 	void Update () {
 		Vector3 distance = Vector3.zero;
 		if (hero != null) {
-			SetCameraAngle (hero.ChangingDirIndex);
-			var heroLocalPos = transform.InverseTransformPoint (hero.transform.position);
-			distance = (heroLocalPos - transform.localPosition)/*+new Vector3(-3*hero.MovingDir,0,0)*/;
+			if (changingDirIndex != hero.ChangingDirIndex) {
+				SetCameraAngle (hero.ChangingDirIndex);
+			}
+			var heroLocalPos = cameraParent.transform.InverseTransformPoint (hero.transform.position);
+			distance = (heroLocalPos - transform.localPosition);
+			if (!isRotating) {
+				distance += new Vector3 (-3 * hero.MovingDir, 0, 0);
+			}
 			transform.localPosition += Time.deltaTime * 7f * new Vector3 (distance.x, distance.y, 0);
 		}
 	}
 
 	private bool isRotating = false;
+	private int changingDirIndex;
 	private void SetCameraAngle(int index) {
 		if (!isRotating) {
-			StartCoroutine(RotateTo (cameraParent.transform, angles[index].y, 0.2f, (x)=>{isRotating = x;}));
+			changingDirIndex = index;
+			StartCoroutine(RotateTo (cameraParent.transform, angles[index].y, 0.5f, (x)=>{isRotating = x;}));
 		}
 	}
 

@@ -33,25 +33,26 @@ public class Hero : DynamicBody {
 			spine.AnimationState.SetAnimation (0, "roll", true);
 		}*/
 
-		if (Mathf.Abs(transform.localPosition.x)>6 && ChangingDirIndex == 0) {
+		var towerWidth = 8f;
+		if (Mathf.Abs(transform.localPosition.x)>towerWidth && ChangingDirIndex == 0) {
 			var sign = (int)Mathf.Sign(transform.localPosition.x);
 			ChangeDir (sign);
-			transform.localPosition = new Vector3 (6*sign, transform.localPosition.y, transform.localPosition.z);
+			transform.localPosition = new Vector3 (towerWidth*sign, transform.localPosition.y, transform.localPosition.z);
 		}
-		if (Mathf.Abs(transform.localPosition.z)>6  && ChangingDirIndex == 1) {
+		if (Mathf.Abs(transform.localPosition.z)>towerWidth  && ChangingDirIndex == 1) {
 			var sign = (int)Mathf.Sign(transform.localPosition.z);
 			ChangeDir (sign);
-			transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, 6*sign);
+			transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, towerWidth*sign);
 		}
-		if (Mathf.Abs(transform.localPosition.x)>6 && ChangingDirIndex == 2) {
+		if (Mathf.Abs(transform.localPosition.x)>towerWidth && ChangingDirIndex == 2) {
 			var sign = -(int)Mathf.Sign(transform.localPosition.x);
 			ChangeDir (sign);
-			transform.localPosition = new Vector3 (-6*sign, transform.localPosition.y, transform.localPosition.z);
+			transform.localPosition = new Vector3 (-towerWidth*sign, transform.localPosition.y, transform.localPosition.z);
 		}
-		if (Mathf.Abs(transform.localPosition.z)>6 && ChangingDirIndex == 3) {
+		if (Mathf.Abs(transform.localPosition.z)>towerWidth && ChangingDirIndex == 3) {
 			var sign = -(int)Mathf.Sign(transform.localPosition.z);
 			ChangeDir (sign);
-			transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, -6*sign);
+			transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, -towerWidth*sign);
 		}
 	}
 
