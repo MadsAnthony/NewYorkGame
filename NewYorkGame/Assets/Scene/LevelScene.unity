@@ -712,6 +712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tile: {fileID: 1116036059739970, guid: 39abe08e54b2dcd45980b95e87889b8e, type: 2}
+  spike: {fileID: 1116036059739970, guid: 9d161c8d112a6d34d9d24fb88d0f2eb4, type: 2}
 --- !u!4 &2141179677
 Transform:
   m_ObjectHideFlags: 0
