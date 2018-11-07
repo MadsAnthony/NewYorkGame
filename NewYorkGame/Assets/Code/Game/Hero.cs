@@ -2,9 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Spine.Unity;
 
 public class Hero : DynamicBody {
-	//public SkeletonAnimation spine;
+	public SkeletonAnimation spine;
 	public GameObject sprite;
 	private Vector3 spriteStartScale;
 	public int levelDoorIndex;
@@ -54,6 +55,7 @@ public class Hero : DynamicBody {
 			ChangeDir (sign);
 			transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, -towerWidth*sign);
 		}
+
 	}
 
 	protected override void OnSmash() {

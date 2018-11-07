@@ -26,7 +26,7 @@ public class CameraManager : MonoBehaviour {
 		if (IgnoreCameraMaterial) return;
 		cameraMaterial.SetFloat ("_Transparency", 0);
 	}
-		
+
 	// Update is called once per frame
 	void Update () {
 		Vector3 distance = Vector3.zero;
@@ -34,6 +34,7 @@ public class CameraManager : MonoBehaviour {
 			if (changingDirIndex != hero.ChangingDirIndex) {
 				SetCameraAngle (hero.ChangingDirIndex);
 			}
+			hero.spine.transform.localEulerAngles = new Vector3 (0,cameraParent.transform.localEulerAngles.y,hero.spine.transform.localEulerAngles.z);
 			var heroLocalPos = cameraParent.transform.InverseTransformPoint (hero.transform.position);
 			distance = (heroLocalPos - transform.localPosition);
 			if (!isRotating) {
