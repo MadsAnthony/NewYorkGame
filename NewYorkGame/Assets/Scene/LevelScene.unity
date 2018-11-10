@@ -597,7 +597,7 @@ Prefab:
     - target: {fileID: 114963897903338332, guid: a5e0cf8903952a644a1289310ba5c592,
         type: 2}
       propertyPath: _animationName
-      value: animation
+      value: Run
       objectReference: {fileID: 0}
     - target: {fileID: 4075886579359714, guid: a5e0cf8903952a644a1289310ba5c592, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
