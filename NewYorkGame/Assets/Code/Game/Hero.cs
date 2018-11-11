@@ -29,11 +29,11 @@ public class Hero : DynamicBody {
 
 		/*if (IsOnGround && MovingDir == 0 && spine.AnimationState.GetCurrent(0).ToString() != "idle" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
 			spine.AnimationState.SetAnimation (0, "idle", true);
-		}
-
-		if (IsOnGround && gravity<=0 && MovingDir!=0 && spine.AnimationState.GetCurrent(0).ToString() != "roll" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
-			spine.AnimationState.SetAnimation (0, "roll", true);
 		}*/
+
+		if (IsOnGround && gravity<=0 && MovingDir!=0 && spine.AnimationState.GetCurrent(0).ToString() != "Run" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
+			spine.AnimationState.SetAnimation (0, "Run", true);
+		}
 
 		var towerWidth = 8f;
 		if (Mathf.Abs(transform.localPosition.x)>towerWidth && ChangingDirIndex == 0) {
@@ -140,7 +140,7 @@ public class Hero : DynamicBody {
 				Jump ();
 				upMovementConsumed = true;
 
-				//spine.AnimationState.SetAnimation (0, "jump", false);
+				spine.AnimationState.SetAnimation (0, "Idle", false);
 
 				if (IsOnLevelDoor) {
 					MovingDir = oldMovingDir;
