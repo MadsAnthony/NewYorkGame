@@ -17,17 +17,17 @@ public class LevelBuilder : MonoBehaviour {
 			SpawnOneStage (angle);
 		}
 
-		SpawnOneSide (new Vector2 (1,0), 0);
+		SpawnOneSide (new Vector2 (1,0), 0, 0);
 	}
 
 	private void SpawnOneStage(float inputAngle) {
-		SpawnOneSide (new Vector2 (1,0), inputAngle);
-		SpawnOneSide (new Vector2 (0,1), inputAngle);
-		SpawnOneSide (new Vector2 (-1,0), inputAngle);
-		SpawnOneSide (new Vector2 (0,-1), inputAngle);
+		SpawnOneSide (new Vector2 (1,0), inputAngle, 0);
+		SpawnOneSide (new Vector2 (0,1), inputAngle, 270);
+		SpawnOneSide (new Vector2 (-1,0), inputAngle, 180);
+		SpawnOneSide (new Vector2 (0,-1), inputAngle, 90);
 	}
 
-	private void SpawnOneSide(Vector2 dir, float inputAngle) {
+	private void SpawnOneSide(Vector2 dir, float inputAngle, float facingAngle) {
 		var towerWidth = 15;
 		var randomI = Random.Range (0+4, towerWidth);
 		var angle = inputAngle;
@@ -43,9 +43,9 @@ public class LevelBuilder : MonoBehaviour {
 				angle = 0;
 			}
 
-			var angleV = new Vector3 (angle*-dir.y, 0 ,angle*dir.x);
+			var angleV = new Vector3 (0, facingAngle, angle);
 
-			var floor = SpawnFloor (spawnPosition, angleV);
+			var floor = SpawnFloor (spawnPosition, angleV, i == towerWidth);
 
 			if (i == randomI) {
 				SpawnSpike (floor, new Vector3 (0, 1, 0));
@@ -53,8 +53,9 @@ public class LevelBuilder : MonoBehaviour {
 		}
 	}
 
-	private GameObject SpawnFloor(Vector3 position, Vector3 angle) {
+	private GameObject SpawnFloor(Vector3 position, Vector3 angle, bool isLast) {
 		var tileObject = GameObject.Instantiate (tile);
+		tileObject.GetComponent<FloorTile> ().SideTile.SetActive (isLast);
 		tileObject.transform.localEulerAngles = angle;
 		tileObject.transform.localPosition = position;
 		return tileObject;

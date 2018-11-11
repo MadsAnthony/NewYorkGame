@@ -34,13 +34,14 @@ public class CameraManager : MonoBehaviour {
 			if (changingDirIndex != hero.ChangingDirIndex) {
 				SetCameraAngle (hero.ChangingDirIndex);
 			}
-			hero.spine.transform.localEulerAngles = new Vector3 (0,cameraParent.transform.localEulerAngles.y,hero.spine.transform.localEulerAngles.z);
+			hero.spinePivot.transform.localEulerAngles = new Vector3 (0,cameraParent.transform.localEulerAngles.y,hero.spine.transform.localEulerAngles.z);
 			var heroLocalPos = cameraParent.transform.InverseTransformPoint (hero.transform.position);
 			distance = (heroLocalPos - transform.localPosition);
 			if (!isRotating) {
 				distance += new Vector3 (-3 * hero.MovingDir, 0, 0);
 			}
 			transform.localPosition += Time.deltaTime * 7f * new Vector3 (distance.x, distance.y, 0);
+			transform.position = new Vector3 (transform.position.x,Mathf.Clamp (transform.position.y,12,40),transform.position.z);
 		}
 	}
 

@@ -5,6 +5,7 @@ using UnityEngine;
 using Spine.Unity;
 
 public class Hero : DynamicBody {
+	public GameObject spinePivot;
 	public SkeletonAnimation spine;
 	public GameObject sprite;
 	private Vector3 spriteStartScale;
