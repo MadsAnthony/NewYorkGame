@@ -10,6 +10,7 @@ public class CameraManager : MonoBehaviour {
 	[SerializeField] bool IgnoreCameraMaterial;
 	[SerializeField] private Hero hero;
 	[SerializeField] private GameObject cameraParent;
+	[SerializeField] private GameObject kingKong;
 	public Material cameraMaterial;
 
 	public AnimationCurve showLayerCurve;
@@ -34,7 +35,8 @@ public class CameraManager : MonoBehaviour {
 			if (changingDirIndex != hero.ChangingDirIndex) {
 				SetCameraAngle (hero.ChangingDirIndex);
 			}
-			hero.spinePivot.transform.localEulerAngles = new Vector3 (0,cameraParent.transform.localEulerAngles.y,hero.spine.transform.localEulerAngles.z);
+			hero.spinePivot.transform.localEulerAngles = new Vector3 (hero.spine.transform.localEulerAngles.x,cameraParent.transform.localEulerAngles.y,hero.spine.transform.localEulerAngles.z);
+			kingKong.transform.localEulerAngles = new Vector3 (kingKong.transform.localEulerAngles.x,cameraParent.transform.localEulerAngles.y,kingKong.transform.localEulerAngles.z);
 			var heroLocalPos = cameraParent.transform.InverseTransformPoint (hero.transform.position);
 			distance = (heroLocalPos - transform.localPosition);
 			if (!isRotating) {

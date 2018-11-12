@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 1024,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+KingKongArm1
+  rotate: true
+  xy: 766, 133
+  size: 110, 255
+  orig: 110, 255
+  offset: 0, 0
+  index: -1
+KingKongArm2
+  rotate: true
+  xy: 520, 120
+  size: 123, 244
+  orig: 123, 244
+  offset: 0, 0
+  index: -1
+KingKongBody
+  rotate: true
+  xy: 2, 85
+  size: 158, 253
+  orig: 158, 253
+  offset: 0, 0
+  index: -1
+KingKongHead
+  rotate: true
+  xy: 766, 2
+  size: 129, 133
+  orig: 129, 133
+  offset: 0, 0
+  index: -1
+KingKongLegs
+  rotate: false
+  xy: 257, 121
+  size: 261, 122
+  orig: 261, 122
+  offset: 0, 0
+  index: -1
