@@ -1,0 +1,41 @@
+
+skeleton.png
+size: 512,64
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+MaleArm1
+  rotate: true
+  xy: 80, 19
+  size: 37, 64
+  orig: 37, 64
+  offset: 0, 0
+  index: -1
+MaleArm2
+  rotate: true
+  xy: 213, 27
+  size: 29, 60
+  orig: 29, 60
+  offset: 0, 0
+  index: -1
+MaleBody
+  rotate: true
+  xy: 146, 23
+  size: 33, 65
+  orig: 33, 65
+  offset: 0, 0
+  index: -1
+MaleCharacterHead
+  rotate: true
+  xy: 2, 2
+  size: 54, 76
+  orig: 54, 76
+  offset: 0, 0
+  index: -1
+MaleLegs
+  rotate: false
+  xy: 275, 10
+  size: 47, 46
+  orig: 47, 46
+  offset: 0, 0
+  index: -1
