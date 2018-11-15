@@ -10,8 +10,8 @@ Shader "Custom/MirrorShader"
 	}
 	SubShader
 	{
-		ZWrite On Lighting Off Cull Off Fog { Mode Off } Blend SrcAlpha OneMinusSrcAlpha
-		Tags { "Queue"="Transparent" "RenderType"="Transparent" "IgnoreProjector"="True" }
+		Blend SrcAlpha OneMinusSrcAlpha
+		Tags {  "RenderType"="Transparent" }
 
 		GrabPass { "_GrabTexture" }
 
