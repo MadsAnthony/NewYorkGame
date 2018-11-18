@@ -40,7 +40,7 @@ public class IntroView : MonoBehaviour {
 		yield return new WaitForSeconds (0.5f);
 		yield return FadeTitleDown (2f);
 		yield return MoveCamera (0.5f);
-		yield return WaitForMouseDown ();
+		yield return new WaitForSeconds (0.2f);
 		yield return ShowDialog ("Woohoo, så er vi her sgu!++ |New York city!", "Maria");
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Ja, det er ret vildt!", "Mads");
