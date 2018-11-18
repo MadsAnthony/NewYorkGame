@@ -35,7 +35,7 @@ public abstract class Piece : MonoBehaviour {
 
 	public void Destroy() {
 		Director.GameEventManager.Emit(new GameEvent(GameEventType.PieceDestroyed, this));
-		gameObject.SetActive(false);
+		//gameObject.SetActive(false);
 	}
 
 	private float gap = 0.01f;

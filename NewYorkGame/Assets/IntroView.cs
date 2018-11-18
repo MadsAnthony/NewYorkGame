@@ -58,7 +58,7 @@ public class IntroView : MonoBehaviour {
 		yield return WaitForMouseDown ();
 		HideDialog ();
 		yield return new WaitForSeconds (0.5f);
-		yield return ShowDialog ("Wtf?!+ Hvad er det der kommer imod os?", "Mads");
+		yield return ShowDialog ("Wtf?!+ Hvad er det der?", "Mads");
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Shit! Den er jo enorm!", "Maria");
 		yield return WaitForMouseDown ();
@@ -66,7 +66,7 @@ public class IntroView : MonoBehaviour {
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Fuck!+ Ja tror du har ret, det er en kæmpe abe!", "Maria");
 		yield return WaitForMouseDown ();
-		yield return ShowDialog ("Åh nej den den har fået øje på os!", "Maria");
+		yield return ShowDialog ("Åh nej, den har fået øje på os!", "Maria");
 		yield return WaitForMouseDown ();
 		HideDialog ();
 		yield return ZoomOut (5);

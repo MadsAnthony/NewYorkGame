@@ -10,6 +10,8 @@ public class Hero : DynamicBody {
 	public GameObject sprite;
 	private Vector3 spriteStartScale;
 	public int levelDoorIndex;
+	private bool isInvisible;
+	private int lives = 3;
 
 	protected override void OnStart() {
 		spriteStartScale = sprite.transform.localScale;
@@ -27,9 +29,9 @@ public class Hero : DynamicBody {
 		}
 		sprite.transform.eulerAngles = new Vector3 (0,0,90*(dirsIndex));
 
-		/*if (IsOnGround && MovingDir == 0 && spine.AnimationState.GetCurrent(0).ToString() != "idle" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
-			spine.AnimationState.SetAnimation (0, "idle", true);
-		}*/
+		if (!stopMoving && IsOnGround && MovingDir == 0 && spine.AnimationState.GetCurrent(0).ToString() != "Idle" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
+			spine.AnimationState.SetAnimation (0, "Idle", true);
+		}
 
 		if (IsOnGround && gravity<=0 && MovingDir!=0 && spine.AnimationState.GetCurrent(0).ToString() != "Run" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
 			spine.AnimationState.SetAnimation (0, "Run", true);
@@ -56,7 +58,23 @@ public class Hero : DynamicBody {
 			ChangeDir (sign);
 			transform.localPosition = new Vector3 (transform.localPosition.x, transform.localPosition.y, -towerWidth*sign);
 		}
+		if (transform.localPosition.y>37 && IsOnGround) {
+			spine.transform.localEulerAngles = new Vector3 (0,0,0);
+		}
 
+	}
+
+	public void LooseLife() {
+		if (!isInvisible) {
+			lives -= 1;
+			isInvisible = true;
+			StartCoroutine (CooldownForInvisible());
+		}
+	}
+
+	public IEnumerator CooldownForInvisible() {
+		yield return new WaitForSeconds (2);
+		isInvisible = false;
 	}
 
 	protected override void OnSmash() {

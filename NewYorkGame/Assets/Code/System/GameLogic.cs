@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Spine.Unity;
 
 public class GameLogic : MonoBehaviour {
+	[SerializeField] private SkeletonAnimation kingKong;
+	[SerializeField] private SkeletonAnimation maleCharacter;
+	[SerializeField] private GameObject cameraParent;
+	[SerializeField] private AnimationCurve moveCameraCurve;
+	[SerializeField] private GameObject endTitle;
+
 	public int collectablesCollected;
 	public int collectablesGoal;
 	public int coloredBlocksGoal;
@@ -14,10 +21,12 @@ public class GameLogic : MonoBehaviour {
 	public LevelAsset level;
 	public float time = 0;
 	bool stopTimer = false;
-
+	bool isRestartingLevel;
 	public Hero hero;
-	// Use this for initialization
+
 	void Start () {
+		maleCharacter.gameObject.SetActive (false);
+		endTitle.gameObject.SetActive (false);
 		Director.GameEventManager.OnGameEvent += HandleGameEvent;
 	}
 
@@ -42,20 +51,58 @@ public class GameLogic : MonoBehaviour {
 		case GameEventType.LevelCompleted:
 			stopTimer = true;
 			hero.StopMoving ();
+			StartCoroutine (WinLevel());
 			break;
 		case GameEventType.PieceDestroyed:
 			Piece tmpPiece = ((Piece)e.context);
 			if (tmpPiece.Type == PieceType.Hero) {
-				StartCoroutine (RestartLevelCr (0.2f));
+				hero.LooseLife ();
+				//StartCoroutine (RestartLevelCr (0.2f));
 			}
 			break;
 		}
 	}
 
+	private IEnumerator WinLevel() {
+		hero.spine.AnimationState.SetAnimation (0, "Idle", true);
+		kingKong.AnimationState.SetAnimation (0, "Fall", false);
+		yield return MoveGameObject (cameraParent, cameraParent.transform.localPosition.x + 8, cameraParent.transform.localPosition.y, 1);
+		yield return new WaitForSeconds (2);
+		maleCharacter.gameObject.SetActive (true);
+		yield return MoveGameObject (cameraParent, cameraParent.transform.localPosition.x - 10, cameraParent.transform.localPosition.y, 1);
+		var heroSpineLocalScale = hero.spine.transform.localScale;
+		hero.spine.transform.localScale = new Vector3 (heroSpineLocalScale.x*-1,heroSpineLocalScale.y,heroSpineLocalScale.z);
+		hero.spine.AnimationState.SetAnimation (0, "Run", true);
+		yield return MoveGameObject (hero.gameObject, hero.transform.localPosition.x - 3, hero.transform.localPosition.y, 1);
+		hero.spine.AnimationState.SetAnimation (0, "Idle", true);
+		yield return MoveGameObject (cameraParent, cameraParent.transform.localPosition.x - 3.5f, cameraParent.transform.localPosition.y, 1);
+		yield return new WaitForSeconds (1);
+		yield return MoveGameObject (cameraParent, cameraParent.transform.localPosition.x, cameraParent.transform.localPosition.y+20, 0.2f);
+		endTitle.gameObject.SetActive (true);
+	}
+
+	private IEnumerator MoveGameObject(GameObject gameObject, float newX, float newY, float duration) {
+		var startPos = gameObject.transform.localPosition;
+		float t = 0;
+		while (t < 1) {
+			t += duration*Time.deltaTime;
+			var actualT = moveCameraCurve.Evaluate(t);
+			var x = Mathf.Lerp (startPos.x,newX,actualT);
+			var y = Mathf.Lerp (startPos.y,newY,actualT);
+			gameObject.transform.localPosition = new Vector3 (x, y, gameObject.transform.localPosition.z);
+			yield return null;
+		}
+
+		gameObject.transform.localPosition = new Vector3 (newX, newY, gameObject.transform.localPosition.z);
+
+		yield break;
+	}
+
 	IEnumerator RestartLevelCr(float delay) {
+		if (isRestartingLevel) yield break;
+		isRestartingLevel = true;
 		yield return new WaitForSeconds(delay);
 		Director.TransitionManager.PlayTransition (() => {SceneManager.LoadScene ("LevelScene");},0,Director.TransitionManager.FadeToColor(new Color(1,1,1,1),0.2f),Director.TransitionManager.FadeOut(0.2f));
-		//SceneManager.LoadScene ("LevelScene");
 	}
 
 	// Update is called once per frame

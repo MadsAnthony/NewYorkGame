@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33551517995118246}
   - component: {fileID: 65844261126231034}
   - component: {fileID: 23388185589025898}
-  - component: {fileID: 114685961251667406}
+  - component: {fileID: 114518017902772902}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -179,7 +179,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114685961251667406
+--- !u!114 &114518017902772902
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -187,14 +187,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1116036059739970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e7613987ef17e3478440ae72153f059, type: 3}
+  m_Script: {fileID: 11500000, guid: bc81c8d7cfd667f47bbacfe72005ad44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Type: 3
   CollisionPropertyDefault: 0
-  spriteTile: {fileID: 0}
-  SideGameObjects: []
-  SideGameObjectsBone: []
-  SideGameObjectsGoo: []
-  innerBlockSprites: []
-  sideSprites: []

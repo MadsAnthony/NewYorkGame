@@ -215,6 +215,8 @@ MonoBehaviour:
   Type: 4
   CollisionPropertyDefault: 2
   maxGravity: 50
+  spinePivot: {fileID: 0}
+  spine: {fileID: 0}
   sprite: {fileID: 1197920750840040}
   levelDoorIndex: 0
 --- !u!198 &198458355937409866

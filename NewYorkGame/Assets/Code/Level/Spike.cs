@@ -14,6 +14,7 @@ public class Spike : Piece {
 		}
 		if (hitPiece.Type == PieceType.Hero) {
 			hitPiece.Destroy();
+			Destroy (gameObject);
 		}
 	}
 

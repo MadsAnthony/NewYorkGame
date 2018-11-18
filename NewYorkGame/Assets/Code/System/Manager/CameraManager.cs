@@ -31,11 +31,11 @@ public class CameraManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 distance = Vector3.zero;
-		if (hero != null) {
+		if (hero != null && Mathf.Abs(hero.MovingDir)>0) {
 			if (changingDirIndex != hero.ChangingDirIndex) {
 				SetCameraAngle (hero.ChangingDirIndex);
 			}
-			hero.spinePivot.transform.localEulerAngles = new Vector3 (hero.spine.transform.localEulerAngles.x,cameraParent.transform.localEulerAngles.y,hero.spine.transform.localEulerAngles.z);
+			hero.spinePivot.transform.localEulerAngles = new Vector3 (hero.spinePivot.transform.localEulerAngles.x,cameraParent.transform.localEulerAngles.y,hero.spinePivot.transform.localEulerAngles.z);
 			kingKong.transform.localEulerAngles = new Vector3 (kingKong.transform.localEulerAngles.x,cameraParent.transform.localEulerAngles.y,kingKong.transform.localEulerAngles.z);
 			var heroLocalPos = cameraParent.transform.InverseTransformPoint (hero.transform.position);
 			distance = (heroLocalPos - transform.localPosition);
