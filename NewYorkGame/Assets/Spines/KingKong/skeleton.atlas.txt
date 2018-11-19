@@ -1,41 +1,62 @@
 
 skeleton.png
-size: 1024,256
+size: 512,512
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
+GrabbedLegs
+  rotate: false
+  xy: 2, 21
+  size: 90, 77
+  orig: 90, 77
+  offset: 0, 0
+  index: -1
 KingKongArm1
   rotate: true
-  xy: 766, 133
+  xy: 248, 2
   size: 110, 255
   orig: 110, 255
   offset: 0, 0
   index: -1
 KingKongArm2
   rotate: true
-  xy: 520, 120
+  xy: 2, 100
   size: 123, 244
   orig: 123, 244
   offset: 0, 0
   index: -1
 KingKongBody
-  rotate: true
-  xy: 2, 85
+  rotate: false
+  xy: 220, 251
   size: 158, 253
   orig: 158, 253
   offset: 0, 0
   index: -1
+KingKongGrabbedHand
+  rotate: false
+  xy: 379, 114
+  size: 111, 127
+  orig: 111, 127
+  offset: 0, 0
+  index: -1
 KingKongHead
-  rotate: true
-  xy: 766, 2
+  rotate: false
+  xy: 248, 116
   size: 129, 133
   orig: 129, 133
   offset: 0, 0
   index: -1
 KingKongLegs
-  rotate: false
-  xy: 257, 121
+  rotate: true
+  xy: 380, 243
   size: 261, 122
   orig: 261, 122
+  offset: 0, 0
+  index: -1
+MaleGrabbedFront
+  rotate: false
+  xy: 2, 225
+  size: 216, 279
+  orig: 216, 279
   offset: 0, 0
   index: -1

@@ -1028,7 +1028,7 @@ MonoBehaviour:
   calculateTangents: 0
   logErrors: 0
   disableRenderingOnOverride: 1
-  _animationName: Idle
+  _animationName: IdleWithGrab
   loop: 1
   timeScale: 1
 --- !u!23 &1257697550
