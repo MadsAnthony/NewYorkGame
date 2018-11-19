@@ -18,5 +18,6 @@ public class SkyCamera : MonoBehaviour {
 		transform.position = new Vector3 (transform.position.x,camera.transform.position.y*2,transform.position.z);
 		var skyLinePos = ((camera.transform.position.y - 15) / 40);
 		skyLine.transform.localPosition = new Vector3(skyLine.transform.localPosition.x,skyLineStartPos.y+skyLinePos*-10,skyLine.transform.localPosition.z);
+		skyLine.transform.localEulerAngles = camera.transform.localEulerAngles;
 	}
 }

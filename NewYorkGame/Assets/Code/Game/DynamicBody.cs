@@ -5,7 +5,7 @@ using UnityEngine;
 
 public abstract class DynamicBody : Piece {
 	private const float NORMAL_SPEED = 7;
-	private const float GRAVITY_NORMAL_ACC = 1;
+	private const float GRAVITY_NORMAL_ACC = 0.7f;
 
 	protected float gravityAcc = GRAVITY_NORMAL_ACC;
 	protected float gravity;
@@ -121,7 +121,7 @@ public abstract class DynamicBody : Piece {
 
 					// If ceiling is block then stop any jump.
 					if (ExistPiece(ps, (Piece p) => {return p.Type==PieceType.Block;})) {
-						gravity = 1;
+						gravity = 0;
 						EndJump();
 					}
 					// If one ceil block are sticky, then stick to that.
@@ -164,7 +164,7 @@ public abstract class DynamicBody : Piece {
 		isOnGround = false;
 	}
 
-	protected void Jump(float jumpForce = 12) {
+	protected void Jump(float jumpForce = 14) {
 		Director.Sounds.jump.Play ();
 		gravity = jumpForce;
 		noGravityT = 0;

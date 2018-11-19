@@ -7,6 +7,7 @@ using Spine.Unity;
 public class GameLogic : MonoBehaviour {
 	[SerializeField] private SkeletonAnimation kingKong;
 	[SerializeField] private SkeletonAnimation maleCharacter;
+	[SerializeField] private MaleCharacterDrop maleCharacterDrop;
 	[SerializeField] private GameObject cameraParent;
 	[SerializeField] private AnimationCurve moveCameraCurve;
 	[SerializeField] private GameObject endTitle;
@@ -26,6 +27,7 @@ public class GameLogic : MonoBehaviour {
 
 	void Start () {
 		maleCharacter.gameObject.SetActive (false);
+		maleCharacterDrop.gameObject.SetActive (false);
 		endTitle.gameObject.SetActive (false);
 		Director.GameEventManager.OnGameEvent += HandleGameEvent;
 	}
@@ -66,8 +68,9 @@ public class GameLogic : MonoBehaviour {
 	private IEnumerator WinLevel() {
 		hero.spine.AnimationState.SetAnimation (0, "Idle", true);
 		kingKong.AnimationState.SetAnimation (0, "Fall", false);
+		maleCharacterDrop.Drop ();
 		yield return MoveGameObject (cameraParent, cameraParent.transform.localPosition.x + 8, cameraParent.transform.localPosition.y, 1);
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (1.5f);
 		maleCharacter.gameObject.SetActive (true);
 		yield return MoveGameObject (cameraParent, cameraParent.transform.localPosition.x - 10, cameraParent.transform.localPosition.y, 1);
 		var heroSpineLocalScale = hero.spine.transform.localScale;

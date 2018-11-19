@@ -148,15 +148,16 @@ public class Hero : DynamicBody {
 			var verticalDotProduct = Vector3.Dot (mouseDir.normalized, new Vector3(touchDir.y, -touchDir.x,touchDir.z));
 			var verticalDotProductForce = Vector3.Dot (mouseDir, new Vector3(touchDir.y, -touchDir.x,touchDir.z));
 
-			if (Mathf.Abs (horizontalDotProduct) > threshold && !touchConsumed) {
+			/*if (Mathf.Abs (horizontalDotProduct) > threshold && !touchConsumed) {
 				int newMovingDir = -1 * (int)Mathf.Sign (horizontalDotProduct);
 				touchConsumed = newMovingDir != MovingDir;
 				MovingDir = newMovingDir;
-			}
+			}*/
 
 			if (verticalDotProduct < -threshold  && IsOnGround && !touchConsumed && !upMovementConsumed && noGravityT>=1 && gravity<=0) {
 				Jump ();
 				upMovementConsumed = true;
+				EndJump ();
 
 				spine.AnimationState.SetAnimation (0, "Idle", false);
 
