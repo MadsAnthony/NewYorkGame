@@ -31,7 +31,7 @@ public class CameraManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Vector3 distance = Vector3.zero;
-		if (hero != null && Mathf.Abs(hero.MovingDir)>0) {
+		if (hero != null && (Mathf.Abs(hero.MovingDir)>0 || isRotating)) {
 			if (changingDirIndex != hero.ChangingDirIndex) {
 				SetCameraAngle (hero.ChangingDirIndex);
 			}
@@ -47,12 +47,23 @@ public class CameraManager : MonoBehaviour {
 		}
 	}
 
+	private bool heroHasBeenStopped;
 	private bool isRotating = false;
 	private int changingDirIndex;
 	private void SetCameraAngle(int index) {
 		if (!isRotating) {
 			changingDirIndex = index;
-			StartCoroutine(RotateTo (cameraParent.transform, angles[index].y, 0.5f, (x)=>{isRotating = x;}));
+			StartCoroutine(RotateTo (cameraParent.transform, angles[index].y, 0.5f, (x)=>{
+				isRotating = x;
+				if (x) {
+					hero.spine.AnimationState.SetAnimation (0, "Idle", true);
+					hero.spine.transform.localEulerAngles = new Vector3 (0,0,0);
+					hero.StopMoving ();
+				} else {
+					hero.spine.AnimationState.SetAnimation (0, "Run", true);
+					hero.spine.transform.localEulerAngles = new Vector3 (0,0,7);
+					hero.StartMoving (-1);
+				}}));
 		}
 	}
 
@@ -123,6 +134,7 @@ public class CameraManager : MonoBehaviour {
 			}
 			yield return null;
 		}
+
 		if (callback != null) {
 			callback (false);
 		}

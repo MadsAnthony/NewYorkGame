@@ -9,6 +9,8 @@ public class LevelBuilder : MonoBehaviour {
 
 	private Vector3 spawnPosition;
 
+	private int sideCount = 0;
+
 	private void Start () {
 		spawnPosition = new Vector3 (-8,0,-8);
 
@@ -29,7 +31,8 @@ public class LevelBuilder : MonoBehaviour {
 
 	private void SpawnOneSide(Vector2 dir, float inputAngle, float facingAngle) {
 		var towerWidth = 15;
-		var randomI = Random.Range (0+4, towerWidth);
+		var randomI = Random.Range (2, towerWidth);
+		var randomI2 = Random.Range (2, towerWidth);
 		var angle = inputAngle;
 		var cosX = Mathf.Cos (angle * Mathf.Deg2Rad);
 		var sinX = Mathf.Sin (angle * Mathf.Deg2Rad);
@@ -47,10 +50,15 @@ public class LevelBuilder : MonoBehaviour {
 
 			var floor = SpawnFloor (spawnPosition, angleV, i == towerWidth);
 
-			if (i == randomI) {
+			if (i == randomI && sideCount >0 && sideCount != 16 && sideCount<20) {
+				SpawnSpike (floor, new Vector3 (0, 1, 0));
+			}
+			if (i == randomI2 && sideCount >10 && sideCount != 16 && sideCount<20) {
 				SpawnSpike (floor, new Vector3 (0, 1, 0));
 			}
 		}
+
+		sideCount += 1;
 	}
 
 	private GameObject SpawnFloor(Vector3 position, Vector3 angle, bool isLast) {

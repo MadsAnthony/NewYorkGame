@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Spine.Unity;
+using UnityEngine.UI;
 
 public class GameLogic : MonoBehaviour {
 	[SerializeField] private SkeletonAnimation kingKong;
@@ -11,6 +12,9 @@ public class GameLogic : MonoBehaviour {
 	[SerializeField] private GameObject cameraParent;
 	[SerializeField] private AnimationCurve moveCameraCurve;
 	[SerializeField] private GameObject endTitle;
+
+	[SerializeField] private GameObject livesBar;
+	[SerializeField] private Text livesText;
 
 	public int collectablesCollected;
 	public int collectablesGoal;
@@ -59,13 +63,16 @@ public class GameLogic : MonoBehaviour {
 			Piece tmpPiece = ((Piece)e.context);
 			if (tmpPiece.Type == PieceType.Hero) {
 				hero.LooseLife ();
-				//StartCoroutine (RestartLevelCr (0.2f));
+				if (hero.Lives <= 0) {
+					StartCoroutine (RestartLevelCr (0.2f));
+				}
 			}
 			break;
 		}
 	}
 
 	private IEnumerator WinLevel() {
+		livesBar.gameObject.SetActive (false);
 		hero.spine.AnimationState.SetAnimation (0, "Idle", true);
 		kingKong.AnimationState.SetAnimation (0, "Fall", false);
 		maleCharacterDrop.Drop ();
@@ -110,6 +117,8 @@ public class GameLogic : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		livesText.text = hero.Lives.ToString();
+
 		if (!stopTimer) {
 			time += Time.deltaTime;
 		}

@@ -11,7 +11,7 @@ public class Hero : DynamicBody {
 	private Vector3 spriteStartScale;
 	public int levelDoorIndex;
 	private bool isInvisible;
-	private int lives = 3;
+	public int Lives = 3;
 
 	protected override void OnStart() {
 		spriteStartScale = sprite.transform.localScale;
@@ -31,9 +31,10 @@ public class Hero : DynamicBody {
 
 		if (!stopMoving && IsOnGround && MovingDir == 0 && spine.AnimationState.GetCurrent(0).ToString() != "Idle" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
 			spine.AnimationState.SetAnimation (0, "Idle", true);
+			spine.transform.localEulerAngles += new Vector3 (0,0,50)*Time.deltaTime;
 		}
 
-		if (IsOnGround && gravity<=0 && MovingDir!=0 && spine.AnimationState.GetCurrent(0).ToString() != "Run" && (spine.AnimationState.GetCurrent(0).Loop || spine.AnimationState.GetCurrent (0).IsComplete)) {
+		if (IsOnGround && gravity<=0 && MovingDir!=0 && spine.AnimationState.GetCurrent(0).ToString() != "Run" && spine.AnimationState.GetCurrent(0).ToString() != "Slide") {
 			spine.AnimationState.SetAnimation (0, "Run", true);
 		}
 
@@ -66,14 +67,14 @@ public class Hero : DynamicBody {
 
 	public void LooseLife() {
 		if (!isInvisible) {
-			lives -= 1;
+			Lives -= 1;
 			isInvisible = true;
 			StartCoroutine (CooldownForInvisible());
 		}
 	}
 
 	public IEnumerator CooldownForInvisible() {
-		yield return new WaitForSeconds (2);
+		yield return new WaitForSeconds (0.5f);
 		isInvisible = false;
 	}
 
@@ -159,7 +160,7 @@ public class Hero : DynamicBody {
 				upMovementConsumed = true;
 				EndJump ();
 
-				spine.AnimationState.SetAnimation (0, "Idle", false);
+				spine.AnimationState.SetAnimation (0, "Jump", false);
 
 				if (IsOnLevelDoor) {
 					MovingDir = oldMovingDir;
@@ -168,6 +169,11 @@ public class Hero : DynamicBody {
 
 			if (verticalDotProduct > threshold && !IsOnGround && !touchConsumed) {
 				gravity = -maxGravity;
+				touchConsumed = true;
+			}
+
+			if (verticalDotProduct > threshold && IsOnGround && !touchConsumed) {
+				spine.AnimationState.SetAnimation (0, "Slide", false);
 				touchConsumed = true;
 			}
 		}

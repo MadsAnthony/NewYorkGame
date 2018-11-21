@@ -1,146 +1,146 @@
 
 skeleton.png
-size: 256,128
+size: 512,256
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 Arm1
   rotate: false
-  xy: 120, 54
-  size: 42, 72
-  orig: 42, 72
+  xy: 232, 111
+  size: 84, 143
+  orig: 84, 143
   offset: 0, 0
   index: -1
 Arm2
   rotate: false
-  xy: 164, 56
-  size: 39, 70
-  orig: 39, 70
+  xy: 318, 114
+  size: 78, 140
+  orig: 78, 140
   offset: 0, 0
   index: -1
 Body
   rotate: false
-  xy: 75, 48
-  size: 43, 78
-  orig: 43, 78
+  xy: 145, 99
+  size: 85, 155
+  orig: 85, 155
   offset: 0, 0
   index: -1
 FemaleHead
   rotate: false
-  xy: 2, 37
-  size: 71, 89
-  orig: 71, 89
+  xy: 2, 77
+  size: 141, 177
+  orig: 141, 177
   offset: 0, 0
   index: -1
 Head
   rotate: false
-  xy: 195, 27
-  size: 26, 26
-  orig: 26, 26
+  xy: 293, 57
+  size: 52, 52
+  orig: 52, 52
   offset: 0, 0
   index: -1
 LegRun/LegRun1
   rotate: true
-  xy: 223, 29
-  size: 24, 20
-  orig: 24, 20
+  xy: 430, 83
+  size: 47, 39
+  orig: 47, 39
   offset: 0, 0
   index: -1
 LegRun/LegRun10
   rotate: false
-  xy: 27, 2
-  size: 36, 17
-  orig: 36, 17
+  xy: 2, 2
+  size: 71, 33
+  orig: 71, 33
   offset: 0, 0
   index: -1
 LegRun/LegRun11
-  rotate: false
-  xy: 27, 21
-  size: 41, 14
-  orig: 41, 14
+  rotate: true
+  xy: 398, 125
+  size: 82, 27
+  orig: 82, 27
   offset: 0, 0
   index: -1
 LegRun/LegRun12
   rotate: false
-  xy: 205, 107
-  size: 37, 19
-  orig: 37, 19
+  xy: 2, 37
+  size: 74, 38
+  orig: 74, 38
   offset: 0, 0
   index: -1
 LegRun/LegRun13
   rotate: false
-  xy: 205, 80
-  size: 30, 25
-  orig: 30, 25
+  xy: 232, 59
+  size: 59, 50
+  orig: 59, 50
   offset: 0, 0
   index: -1
 LegRun/LegRun14
-  rotate: true
-  xy: 205, 55
-  size: 23, 31
-  orig: 23, 31
+  rotate: false
+  xy: 459, 142
+  size: 46, 62
+  orig: 46, 62
   offset: 0, 0
   index: -1
 LegRun/LegRun2
-  rotate: false
-  xy: 164, 34
-  size: 29, 20
-  orig: 29, 20
+  rotate: true
+  xy: 347, 54
+  size: 58, 40
+  orig: 58, 40
   offset: 0, 0
   index: -1
 LegRun/LegRun3
   rotate: false
-  xy: 70, 10
-  size: 34, 19
-  orig: 34, 19
+  xy: 78, 37
+  size: 67, 38
+  orig: 67, 38
   offset: 0, 0
   index: -1
 LegRun/LegRun4
-  rotate: false
-  xy: 75, 31
-  size: 38, 15
-  orig: 38, 15
+  rotate: true
+  xy: 427, 132
+  size: 75, 30
+  orig: 75, 30
   offset: 0, 0
   index: -1
 LegRun/LegRun5
-  rotate: true
-  xy: 244, 85
-  size: 41, 10
-  orig: 41, 10
+  rotate: false
+  xy: 145, 77
+  size: 81, 20
+  orig: 81, 20
   offset: 0, 0
   index: -1
 LegRun/LegRun6
   rotate: false
-  xy: 120, 34
-  size: 35, 18
-  orig: 35, 18
+  xy: 147, 40
+  size: 70, 35
+  orig: 70, 35
   offset: 0, 0
   index: -1
 LegRun/LegRun7
-  rotate: true
-  xy: 2, 2
-  size: 33, 23
-  orig: 33, 23
+  rotate: false
+  xy: 398, 209
+  size: 65, 45
+  orig: 65, 45
   offset: 0, 0
   index: -1
 LegRun/LegRun8
   rotate: false
-  xy: 106, 5
-  size: 20, 24
-  orig: 20, 24
+  xy: 389, 64
+  size: 39, 48
+  orig: 39, 48
   offset: 0, 0
   index: -1
 LegRun/LegRun9
-  rotate: false
-  xy: 128, 11
-  size: 24, 21
-  orig: 24, 21
+  rotate: true
+  xy: 465, 206
+  size: 48, 41
+  orig: 48, 41
   offset: 0, 0
   index: -1
 Legs
-  rotate: false
-  xy: 154, 13
-  size: 19, 19
-  orig: 19, 19
+  rotate: true
+  xy: 471, 102
+  size: 38, 37
+  orig: 38, 37
   offset: 0, 0
   index: -1
