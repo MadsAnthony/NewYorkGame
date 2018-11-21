@@ -138,6 +138,8 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
+  m_AllowMSAA: 1
+  m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
@@ -205,6 +207,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   overlay: {fileID: 114242010870403836}
   camera: {fileID: 20211492311573004}
+  isPlayingTransition: 0
 --- !u!114 &114847524715223806
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -246,7 +249,7 @@ Canvas:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1494733458672310}
   m_Enabled: 1
-  serializedVersion: 2
+  serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 20211492311573004}
   m_PlaneDistance: 10
@@ -255,6 +258,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0

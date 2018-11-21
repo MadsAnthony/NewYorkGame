@@ -67,7 +67,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _ReflectionX: 35.6
-    - _ReflectionY: 0.4
+    - _ReflectionY: 0.392
     - _ReflectionZ: -39
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1

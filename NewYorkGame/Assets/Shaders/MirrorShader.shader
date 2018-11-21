@@ -29,6 +29,7 @@ Shader "Custom/MirrorShader"
 		    fixed4 _Color;
 		    float _ReflectionY;
 		    float _Strength;
+		    sampler2D _CameraOne;
 
 		    struct vertInput {
 		        float4 pos : POSITION;
@@ -52,7 +53,7 @@ Shader "Custom/MirrorShader"
 		    	float2 uv = output.uvgrab;
 		    	uv = float2(uv.x,_ReflectionY-uv.y);
 		    	fixed4 col = tex2D(_GrabTexture, uv.xy );
-				return fixed4(col.rgb,output.uvgrab.y*_Strength-0.2);
+				return fixed4(col.rgb,(output.uvgrab.y)*_Strength-0.2);
 		    }
 		    ENDCG
 		}

@@ -22,10 +22,14 @@ public class IntroView : MonoBehaviour {
 
 	[SerializeField] private AnimationCurve moveCameraCurve;
 
+	[SerializeField] private GameObject MirrorQuad;
+
 	private bool loadingScene;
 	private bool mousePress;
 	private bool kingKongAnimationIsDone;
 	private void Start() {
+		var director = Director.Instance;
+
 		textBubble.SetActive(false);
 		kingKong.gameObject.SetActive (false);
 		kingKong.AnimationState.TimeScale = 0;
@@ -35,12 +39,13 @@ public class IntroView : MonoBehaviour {
 	}
 
 	private IEnumerator IntroFlow() {
+		
 		yield return WaitForMouseDown ();
 		pressToStart.gameObject.SetActive (false);
 		yield return new WaitForSeconds (0.5f);
 		yield return FadeTitleDown (2f);
 		yield return MoveCamera (0.5f);
-		yield return new WaitForSeconds (0.2f);
+		yield return new WaitForSeconds (0.6f);
 		yield return ShowDialog ("Woohoo, så er vi her sgu!++ |New York city!", "Maria");
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Ja, det er ret vildt!", "Mads");
@@ -78,8 +83,11 @@ public class IntroView : MonoBehaviour {
 		while (!kingKongAnimationIsDone) {
 			yield return true;
 		}
+		yield return new WaitForSeconds (0.5f);
+		yield return ZoomIn (5);
+
 		yield return WaitForMouseDown ();
-		SceneManager.LoadScene ("LevelScene");
+		Director.TransitionManager.PlayTransition (() => { SceneManager.LoadSceneAsync ("LevelScene"); }, 0.1f, Director.TransitionManager.FadeToBlack (), Director.TransitionManager.FadeOut ());
 		loadingScene = true;
 	}
 
@@ -169,7 +177,22 @@ public class IntroView : MonoBehaviour {
 		while (t < 1) {
 			t += duration*Time.deltaTime;
 			camera.orthographicSize = Mathf.Lerp (startSize,11,t);
-			var x = Mathf.Lerp (startPos.x,startPos.x+2f,t);
+			var x = Mathf.Lerp (startPos.x,startPos.x+2.6f,t);
+			camera.transform.position = new Vector3 (x, camera.transform.position.y, camera.transform.position.z);
+			yield return null;
+		}
+
+		yield break;
+	}
+
+	private IEnumerator ZoomIn(float duration) {
+		var startPos = camera.transform.localPosition;
+		var startSize = camera.orthographicSize;
+		float t = 0;
+		while (t < 1) {
+			t += duration*Time.deltaTime;
+			camera.orthographicSize = Mathf.Lerp (startSize,8.1f,t);
+			var x = Mathf.Lerp (startPos.x,startPos.x-2f,t);
 			camera.transform.position = new Vector3 (x, camera.transform.position.y, camera.transform.position.z);
 			yield return null;
 		}
@@ -197,5 +220,10 @@ public class IntroView : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			mousePress = true;
 		}
+		var ratio = camera.orthographicSize / 8.1f;
+		var reflectionY = 0.52f - camera.transform.localPosition.y * 0.12f - (1 - ratio) * 0.45f;
+		var strength = 4 -2 * (reflectionY / 0.52f);
+		MirrorQuad.GetComponent<MeshRenderer>().material.SetFloat ("_ReflectionY", reflectionY);
+		MirrorQuad.GetComponent<MeshRenderer>().material.SetFloat ("_Strength", strength);
 	}
 }
