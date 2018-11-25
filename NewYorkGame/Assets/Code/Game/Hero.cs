@@ -155,7 +155,7 @@ public class Hero : DynamicBody {
 				MovingDir = newMovingDir;
 			}*/
 
-			if (verticalDotProduct < -threshold  && IsOnGround && !touchConsumed && !upMovementConsumed && noGravityT>=1 && gravity<=0) {
+			if (IsOnGround && !touchConsumed && !upMovementConsumed && noGravityT>=1 && gravity<=0) {
 				Jump ();
 				upMovementConsumed = true;
 				EndJump ();
@@ -169,11 +169,6 @@ public class Hero : DynamicBody {
 
 			if (verticalDotProduct > threshold && !IsOnGround && !touchConsumed) {
 				gravity = -maxGravity;
-				touchConsumed = true;
-			}
-
-			if (verticalDotProduct > threshold && IsOnGround && !touchConsumed) {
-				spine.AnimationState.SetAnimation (0, "Slide", false);
 				touchConsumed = true;
 			}
 		}

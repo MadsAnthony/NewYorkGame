@@ -19,6 +19,7 @@ public class IntroView : MonoBehaviour {
 
 	[SerializeField] private SkeletonAnimation kingKong;
 	[SerializeField] private SkeletonAnimation maleCharacter;
+	[SerializeField] private SkeletonAnimation femaleCharacter;
 
 	[SerializeField] private AnimationCurve moveCameraCurve;
 
@@ -27,6 +28,8 @@ public class IntroView : MonoBehaviour {
 	private bool loadingScene;
 	private bool mousePress;
 	private bool kingKongAnimationIsDone;
+	private bool pictureTaken;
+
 	private void Start() {
 		var director = Director.Instance;
 
@@ -34,6 +37,7 @@ public class IntroView : MonoBehaviour {
 		kingKong.gameObject.SetActive (false);
 		kingKong.AnimationState.TimeScale = 0;
 		kingKong.AnimationState.Event += HandleSpineEvent;
+		femaleCharacter.AnimationState.Event += HandleFemaleSpineEvent;
 
 		StartCoroutine (IntroFlow());
 	}
@@ -46,7 +50,7 @@ public class IntroView : MonoBehaviour {
 		yield return FadeTitleDown (2f);
 		yield return MoveCamera (0.5f);
 		yield return new WaitForSeconds (0.6f);
-		yield return ShowDialog ("Woohoo, så er vi her sgu!++ |New York city!", "Maria");
+		yield return ShowDialog ("Woohoo, så er vi her sgu!++ |New York City!", "Maria");
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Ja, det er ret vildt!", "Mads");
 		yield return WaitForMouseDown ();
@@ -63,6 +67,12 @@ public class IntroView : MonoBehaviour {
 		yield return WaitForMouseDown ();
 		HideDialog ();
 		yield return new WaitForSeconds (0.5f);
+		femaleCharacter.AnimationState.SetAnimation (0, "TakePicture", false);
+		while (!pictureTaken) {
+			yield return true;
+		}
+		femaleCharacter.AnimationState.SetAnimation (0, "Idle", true);
+		yield return new WaitForSeconds (1f);
 		yield return ShowDialog ("Wtf?!+ Hvad er det der?", "Mads");
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Shit! Den er jo enorm!", "Maria");
@@ -213,6 +223,12 @@ public class IntroView : MonoBehaviour {
 		if (e.Data.Name == "GrabEnded") {
 			kingKong.AnimationState.SetAnimation (0, "JumpAway", false);
 			kingKongAnimationIsDone = true;
+		}
+	}
+
+	private void HandleFemaleSpineEvent (TrackEntry trackEntry, Spine.Event e) {
+		if (e.Data.Name == "PictureDone") {
+			pictureTaken = true;
 		}
 	}
 

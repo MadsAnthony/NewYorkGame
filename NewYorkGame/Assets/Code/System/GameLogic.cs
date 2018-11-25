@@ -15,6 +15,7 @@ public class GameLogic : MonoBehaviour {
 
 	[SerializeField] private GameObject livesBar;
 	[SerializeField] private Text livesText;
+	[SerializeField] private Text maxText;
 
 	public int collectablesCollected;
 	public int collectablesGoal;
@@ -119,6 +120,7 @@ public class GameLogic : MonoBehaviour {
 	void Update () {
 		livesText.text = hero.Lives.ToString();
 
+		maxText.text = Mathf.RoundToInt(((float)CollectablesCollected/LevelBuilder.MaxCount)*100).ToString ()+"%";
 		if (!stopTimer) {
 			time += Time.deltaTime;
 		}

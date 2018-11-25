@@ -117,6 +117,7 @@ GameObject:
   m_Component:
   - component: {fileID: 37302919}
   - component: {fileID: 37302920}
+  - component: {fileID: 37302921}
   m_Layer: 0
   m_Name: pressToStart
   m_TagString: Untagged
@@ -131,8 +132,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 37302918}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2470.37}
-  m_LocalScale: {x: 229.13718, y: 229.1372, z: 229.1372}
+  m_LocalPosition: {x: 0, y: 0, z: 2095}
+  m_LocalScale: {x: 142.2658, y: 142.2658, z: 142.2658}
   m_Children: []
   m_Father: {fileID: 45591778}
   m_RootOrder: 2
@@ -184,6 +185,17 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &37302921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 37302918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a696eedd887984fb1a7bba82ffa22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &45591774
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,14 +1295,14 @@ RectTransform:
   m_GameObject: {fileID: 1304753489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -4.999909}
-  m_LocalScale: {x: 93.32199, y: 93.32199, z: 93.32199}
+  m_LocalScale: {x: 83.60324, y: 83.60323, z: 83.60323}
   m_Children: []
   m_Father: {fileID: 824241411}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -264, y: 180}
+  m_AnchoredPosition: {x: -264, y: 182.6}
   m_SizeDelta: {x: 1.08, y: 1.519989}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1304753491
@@ -1335,6 +1347,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1363132038 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114963897903338332, guid: a5e0cf8903952a644a1289310ba5c592,
+    type: 2}
+  m_PrefabInternal: {fileID: 605807280}
+  m_Script: {fileID: 11500000, guid: d247ba06193faa74d9335f5481b2b56c, type: 3}
 --- !u!1 &1405523519
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,6 +1917,7 @@ MonoBehaviour:
   femaleHead: {fileID: 1304753489}
   kingKong: {fileID: 1275012520}
   maleCharacter: {fileID: 1524238085}
+  femaleCharacter: {fileID: 1363132038}
   moveCameraCurve:
     serializedVersion: 2
     m_Curve:
@@ -1955,7 +1974,7 @@ RectTransform:
   m_GameObject: {fileID: 2086062287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 2198}
-  m_LocalScale: {x: 229.24017, y: 229.24014, z: 229.24014}
+  m_LocalScale: {x: 125.82365, y: 125.82363, z: 125.82363}
   m_Children: []
   m_Father: {fileID: 45591778}
   m_RootOrder: 0
