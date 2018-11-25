@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class IntroView : MonoBehaviour {
 
 	[SerializeField] private Camera camera;
-	[SerializeField] private Text title;
-	[SerializeField] private GameObject pressToStart;
+	[SerializeField] private SpriteRenderer title;
+	[SerializeField] private SpriteRenderer pressToStart;
 	[SerializeField] private GameObject textBubble;
 	[SerializeField] private Text nameText;
 	[SerializeField] private Text dialogText;
