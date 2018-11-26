@@ -73,7 +73,7 @@ public class IntroView : MonoBehaviour {
 		}
 		femaleCharacter.AnimationState.SetAnimation (0, "Idle", true);
 		yield return new WaitForSeconds (1f);
-		yield return ShowDialog ("Wtf?!+ Hvad er det der?", "Mads");
+		yield return ShowDialog ("Wtf?!+ Hvad er det der i horisonten?", "Mads");
 		yield return WaitForMouseDown ();
 		yield return ShowDialog ("Shit! Den er jo enorm!", "Maria");
 		yield return WaitForMouseDown ();
