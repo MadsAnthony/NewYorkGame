@@ -170,7 +170,7 @@ namespace Spine.Unity.Editor {
 					#if NO_PREFAB_MESH
 					if (isInspectingPrefab) {
 						MeshFilter meshFilter = component.GetComponent<MeshFilter>();
-						if (meshFilter != null)
+						if (meshFilter != null && meshFilter.sharedMesh != null)
 							meshFilter.sharedMesh = null;
 					}
 					#endif
@@ -211,7 +211,7 @@ namespace Spine.Unity.Editor {
 				#if NO_PREFAB_MESH
 				if (isInspectingPrefab) {
 					MeshFilter meshFilter = component.GetComponent<MeshFilter>();
-					if (meshFilter != null)
+					if (meshFilter != null && meshFilter.sharedMesh != null)
 						meshFilter.sharedMesh = null;
 				}
 				#endif
@@ -268,8 +268,8 @@ namespace Spine.Unity.Editor {
 					
 					using (new SpineInspectorUtility.IndentScope()) {
 						using (new EditorGUILayout.HorizontalScope()) {
-							initialFlipX.boolValue = EditorGUILayout.ToggleLeft(initialFlipX.displayName, initialFlipX.boolValue, GUILayout.Width(120f));
-							initialFlipY.boolValue = EditorGUILayout.ToggleLeft(initialFlipY.displayName, initialFlipY.boolValue, GUILayout.Width(120f));
+							SpineInspectorUtility.ToggleLeftLayout(initialFlipX);
+							SpineInspectorUtility.ToggleLeftLayout(initialFlipY);
 							EditorGUILayout.Space();
 						}
 

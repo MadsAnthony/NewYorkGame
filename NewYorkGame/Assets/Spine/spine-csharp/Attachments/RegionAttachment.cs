@@ -32,7 +32,7 @@ using System;
 
 namespace Spine {
 	/// <summary>Attachment that displays a texture region.</summary>
-	public class RegionAttachment : Attachment {
+	public class RegionAttachment : Attachment, IHasRendererObject {
 		public const int BLX = 0;
 		public const int BLY = 1;
 		public const int ULX = 2;
@@ -61,7 +61,7 @@ namespace Spine {
 		public float A { get { return a; } set { a = value; } }
 
 		public string Path { get; set; }
-		public object RendererObject; //public object RendererObject { get; set; }
+		public object RendererObject { get; set; }
 		public float RegionOffsetX { get { return regionOffsetX; } set { regionOffsetX = value; } }
 		public float RegionOffsetY { get { return regionOffsetY; } set { regionOffsetY = value; } } // Pixels stripped from the bottom left, unrotated.
 		public float RegionWidth { get { return regionWidth; } set { regionWidth = value; } }
@@ -79,14 +79,22 @@ namespace Spine {
 		public void UpdateOffset () {
 			float width = this.width;
 			float height = this.height;
+			float localX2 = width * 0.5f;
+			float localY2 = height * 0.5f;
+			float localX = -localX2;
+			float localY = -localY2;
+			if (regionOriginalWidth != 0) { // if (region != null)
+				localX += regionOffsetX / regionOriginalWidth * width;
+				localY += regionOffsetY / regionOriginalHeight * height;
+				localX2 -= (regionOriginalWidth - regionOffsetX - regionWidth) / regionOriginalWidth * width;
+				localY2 -= (regionOriginalHeight - regionOffsetY - regionHeight) / regionOriginalHeight * height;
+			}
 			float scaleX = this.scaleX;
 			float scaleY = this.scaleY;
-			float regionScaleX = width / regionOriginalWidth * scaleX;
-			float regionScaleY = height / regionOriginalHeight * scaleY;
-			float localX = -width / 2 * scaleX + regionOffsetX * regionScaleX;
-			float localY = -height / 2 * scaleY + regionOffsetY * regionScaleY;
-			float localX2 = localX + regionWidth * regionScaleX;
-			float localY2 = localY + regionHeight * regionScaleY;
+			localX *= scaleX;
+			localY *= scaleY;
+			localX2 *= scaleX;
+			localY2 *= scaleY;
 			float rotation = this.rotation;
 			float cos = MathUtils.CosDeg(rotation);
 			float sin = MathUtils.SinDeg(rotation);
